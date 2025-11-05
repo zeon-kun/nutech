@@ -5,7 +5,6 @@ ARG DATABASE_URL_BUILD
 WORKDIR /app
 
 COPY package*.json ./
-
 RUN npm install
 
 COPY . .
@@ -19,10 +18,12 @@ FROM node:25-alpine AS production
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm install --production
 
-COPY --from=build /app/generated/prisma ./generated/prisma 
-COPY --from=build /app/prisma/schema.prisma ./prisma/
+COPY --from=build /app/generated/prisma ./generated/prisma
+COPY --from=build /app/prisma ./prisma
+COPY --from=build /app/src ./src
+COPY --from=build /app/tsconfig.json ./tsconfig.json
 
 RUN mkdir -p /app/uploads
 
@@ -33,4 +34,4 @@ EXPOSE 3010
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-CMD ["docker-entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint.sh"]
