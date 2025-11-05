@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  password      String
+  first_name    String
+  last_name     String
+  profile_image String?
+  balance       Int           @default(0)
+  transactions  Transaction[]
+}
+
+model Banner {
+  id           Int    @id @default(autoincrement())
+  banner_name  String
+  banner_image String
+  description  String
+}
+
+model Service {
+  id             Int           @id @default(autoincrement())
+  service_code   String        @unique
+  service_name   String
+  service_icon   String
+  service_tariff Int
+  Transaction    Transaction[]
+}
+
+model Transaction {
+  id               Int             @id @default(autoincrement())
+  invoice_number   String          @unique
+  transaction_type TransactionType @default(TOPUP)
+  description      String
+  total_amount     Int
+  user_id          Int
+  service_id       Int?
+  created_on       DateTime        @default(now())
+  service          Service?        @relation(fields: [service_id], references: [id])
+  user             User            @relation(fields: [user_id], references: [id])
+}
+
+enum TransactionType {
+  TOPUP
+  PAYMENT
+}
