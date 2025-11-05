@@ -23,7 +23,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=${DATABASE_URL}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       - PORT=${PORT}
       - NODE_ENV=production
       - JWT_SECRET=${JWT_SECRET}
