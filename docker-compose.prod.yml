@@ -4,9 +4,9 @@ services:
     container_name: nutech-postgres
     restart: always
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nutechdb
     networks:
       - nutech-network
     volumes:
@@ -17,17 +17,17 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-      - DATABASE_URL_BUILD=${DATABASE_URL}
+      - DATABASE_URL_BUILD=postgresql://postgres:postgres@postgres:5432/nutechdb
     container_name: nutech-backend
     restart: always
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      - PORT=${PORT}
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/nutechdb
+      - PORT=3010
       - NODE_ENV=production
-      - JWT_SECRET=${JWT_SECRET}
-      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - JWT_SECRET=a28ad65ef495e93f19f75307869e6fc8
+      - ALLOWED_ORIGINS="*"
     networks:
       - nutech-network
 
