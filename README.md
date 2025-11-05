@@ -9,16 +9,6 @@ detailed swagger requirement : https://api-doc-tht.nutech-integrasi.com/
 The project follows a standard layered architecture to ensure clean separation of concerns. This structure helps reviewers easily locate the core components, documentation, and database files.
 
 ```
-Tentu. Saya akan menyajikan versi README.md yang jauh lebih ringkas, hanya fokus pada Struktur Direktori (untuk memandu reviewer menemukan file penting) dan Deployment/Kriteria Utama.
-
-Ini adalah README.md yang sudah disederhanakan:
-
-🚀 SIMS Assignment API Programmer - REST API
-This repository contains the REST API implementation for the SIMS Assignment (Registration, Login, Balance, Top Up, and Transactions) built with Node.js, Express.js, and TypeScript.
-
-📂 Project Directory Structure
-The project follows a standard layered architecture to ensure clean separation of concerns. This structure helps reviewers easily locate the core components, documentation, and database files.
-
 nutech/
 ├── prisma/
 │   ├── migrations/                  # Database DDL (SQL) files are here
