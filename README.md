@@ -38,6 +38,28 @@ nutech/
 └── package.json
 ```
 
+## Setting Up the Project
+
+Create a file named .env in the root directory of your project (if it doesn't exist) and populate it with the required configuration variables.
+
+```
+# env.example
+DATABASE_URL="<your_postgresql_url>"
+PORT=3010
+NODE_ENV=dev
+ALLOWED_ORIGINS="<your_domains>"
+JWT_SECRET="<your-secret-key>"
+UPLOAD_DIR="uploads"
+
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=nutechdb
+```
+
+For a clean local development environment, you only need the database running. You will run the Node.js application directly on your host machine using npm run dev
+
+You can use the docker-compose.dev.yml provided in this project to run your own postgresql instance
+
 ## Deployed Application URL
 
 The API is hosted and accessible via the following URL: https://nutech.jeong.cloud
