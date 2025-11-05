@@ -1,0 +1,45 @@
+# TLDR;
+
+This repository contains the REST API implementation for the SIMS Assignment, focusing on user authentication (Registration, Login), financial transactions (Check Balance, Top Up), and service payments, built according to the provided API Contract and specifications.
+
+detailed swagger requirement : https://api-doc-tht.nutech-integrasi.com/
+
+## Project Structure
+
+The project follows a standard layered architecture to ensure clean separation of concerns. This structure helps reviewers easily locate the core components, documentation, and database files.
+
+```
+Tentu. Saya akan menyajikan versi README.md yang jauh lebih ringkas, hanya fokus pada Struktur Direktori (untuk memandu reviewer menemukan file penting) dan Deployment/Kriteria Utama.
+
+Ini adalah README.md yang sudah disederhanakan:
+
+🚀 SIMS Assignment API Programmer - REST API
+This repository contains the REST API implementation for the SIMS Assignment (Registration, Login, Balance, Top Up, and Transactions) built with Node.js, Express.js, and TypeScript.
+
+📂 Project Directory Structure
+The project follows a standard layered architecture to ensure clean separation of concerns. This structure helps reviewers easily locate the core components, documentation, and database files.
+
+nutech/
+├── prisma/
+│   ├── migrations/                  # Database DDL (SQL) files are here
+│   └── schema.prisma                # Database Schema (Source of Truth)
+├── src/
+│   ├── config/                      # Configuration files (e.g., upload.config.ts)
+│   ├── controllers/                 # Handles HTTP requests & responses
+│   ├── dtos/                        # Data Transfer Objects (Validation)
+│   ├── middleware/                  # Auth, Error, Upload handlers
+│   ├── repositories/                # Database access logic (Raw Queries are here)
+│   ├── routes/                      # API routing definitions
+│   ├── services/                    # Business logic implementation
+│   └── server/
+│       └── server.ts                # Main Express server entry point
+├── Dockerfile                       # Production build definition
+├── docker-compose.prod.yml          # Production services (App & Postgres)
+└── package.json
+```
+
+## Deployed Application URL
+
+The API is hosted and accessible via the following URL: https://nutech.jeong.cloud
+
+Thank you for reviewing the project.
