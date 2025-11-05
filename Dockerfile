@@ -19,7 +19,7 @@ FROM node:25-alpine AS production
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --only=production
+RUN npm install
 
 COPY --from=build /app/generated/prisma ./generated/prisma 
 COPY --from=build /app/prisma/schema.prisma ./prisma/
